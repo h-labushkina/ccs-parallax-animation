@@ -1,0 +1,261 @@
+body {
+    background: #1e3f2d;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    line-height: 1.75rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+p, ul, li {
+    font-size: 1.25rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+section {
+    background-color: #678d68;
+}
+
+svg {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%
+}
+
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.layout-block {
+    position: relative;
+    height: 50vh;
+    min-height: 300px;
+}
+
+.hero-block {
+    position: relative;
+    height: 100vh;
+    min-height: 400px;
+    max-height: 70vw;
+}
+
+.hero {
+    position: relative;
+    background-color: white;
+    animation: parallax linear;
+    animation-timeline: scroll();
+    color: white;
+}
+
+.hero-background {
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    animation: float-0-25 linear;
+    animation-timeline: view();
+}
+
+.emoji {
+    z-index: 0;
+    display: inline-block;
+    font-size: 50px;
+    animation: orbit-in linear, orbit-out ease;
+    animation-timeline: view();
+    animation-range: 0% 80%, 80% 110%;
+}
+
+.hero-content {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    animation: float-25-50 linear;
+    animation-timeline: view(-100px);
+}
+
+.layer1,
+.layer2,
+.layer3,
+.layer4,
+.layer5{
+    display: flex;
+    z-index: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.layer1 {
+    animation: parallax linear;
+    animation-timeline: view();
+    animation-range: 40vh 120%;
+}
+
+.layer2 {
+    animation: parallax2 linear;
+    animation-timeline: view();
+    animation-range: 60vh 100%;
+}
+
+.layer3 {
+    animation: parallax-bottom linear;
+    animation-timeline: view();
+    animation-range: 60vh 100%;
+}
+
+.layer4 {
+    animation: float-right;
+    animation-timeline: view();
+    animation-range: 50vh 100%;
+    /* will not work as max-width is set for parent*/
+}
+
+.layer5 {
+    animation: float-left;
+    animation-timeline: view();
+    animation-range: 50vh 100%;
+}
+
+/* Animation keyframes */
+
+@keyframes parallax {
+    from {
+        top: 0;
+    }
+    to {
+        top: -40%;
+    }
+}
+
+
+@keyframes parallax2 {
+    from {
+        top: 0;
+    }
+    to {
+        top: -20%;
+    }
+}
+
+@keyframes parallax-bottom {
+    from {
+        top: 0;
+    }
+    to {
+        top: 30%;
+    }
+}
+
+@keyframes float-0-25 {
+    from {
+        top: 0;
+    }
+    to {
+        top: 25%;
+    }
+}
+
+@keyframes float-25-50 {
+    from {
+        top: 25%;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+@keyframes float-left {
+    0% {
+        left: 0;
+    }
+    100%  {
+        left: -40%;
+    }
+}
+
+@keyframes float-right {
+    0% {
+        left: 0;
+    }
+    100%  {
+        left: 40%;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0.9);
+    }
+    100%  {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes orbit-in {
+    0% {
+        transform: rotate(200deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes orbit-out {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(-50px, -15px);
+    }
+}
+
+@keyframes launch {
+    from {
+        transform: translate(-100px, 200px);
+    }
+    to {
+        transform: translate(100px, -100px);
+    }
+
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translateX(100px);
+    }
+    to {
+        transform: rotate(-70deg) translateX(0px);
+    }
+
+}
+
+/* Remove animations for users who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+    }
+}
