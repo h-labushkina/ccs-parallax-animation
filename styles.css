@@ -38,6 +38,7 @@ svg {
     flex-direction: column;
     justify-content: center;
     max-width: 1024px;
+    padding: 4rem 2rem 2rem 2rem;
     width: 100%;
     margin: auto;
     box-sizing: border-box;
@@ -72,6 +73,8 @@ svg {
     overflow: hidden;
     z-index: 0;
     animation: float-0-25 linear;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_5tC-lfGOyCD56N90tfsJGz9_YN4sG-D7w6OZAi-KeHMLjaTIC5wTEM&s");
+    background-repeat: repeat;
     animation-timeline: view();
 }
 
@@ -93,11 +96,7 @@ svg {
     animation-timeline: view(-100px);
 }
 
-.layer1,
-.layer2,
-.layer3,
-.layer4,
-.layer5{
+.layer {
     display: flex;
     z-index: 0;
     position: absolute;
@@ -108,6 +107,7 @@ svg {
 }
 
 .layer1 {
+    opacity: 0.6;
     animation: parallax linear;
     animation-timeline: view();
     animation-range: 40vh 120%;
@@ -143,11 +143,7 @@ svg {
     background-color: darkslateblue;
 }
 
-.bg1,
-.bg2,
-.bg3,
-.bg4,
-.bg5{
+.bg {
     display: flex;
     z-index: 0;
     position: absolute;
@@ -158,6 +154,7 @@ svg {
 }
 
 .bg1 {
+    opacity: 0.6;
     background-image: url("https://raw.githubusercontent.com/h-labushkina/ccs-parallax-animation/609b4b41529f3d2aaf3d7e8be223e7376f793b23/svg/1.svg");
     animation: parallax-bg linear;
     animation-timeline: view();
@@ -309,39 +306,28 @@ svg {
     }
 }
 
-@keyframes orbit-out {
-    0% {
-        transform: translate(0px, 0px);
-    }
-    100% {
-        transform: translate(-50px, -15px);
-    }
-}
-
-@keyframes launch {
-    from {
-        transform: translate(-100px, 200px);
-    }
-    to {
-        transform: translate(100px, -100px);
-    }
-
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg) translateX(100px);
-    }
-    to {
-        transform: rotate(-70deg) translateX(0px);
-    }
-
-}
-
 /* Remove animations for users who prefer reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bg {
+        background-size: max(100vh, 100vw);
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p, ul, li {
+        font-size: 1rem;
     }
 }
